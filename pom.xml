@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <groupId>Mandelbrot-Fractal</groupId>
+  <artifactId>Mandelbrot-Fractal</artifactId>
+  <version>1.0</version>
+  <name>Mandelbrot-Fractal</name>
+  <description>Provides a user interface to explore the wonders of the Mandelbrot Set fractal.</description>
+  <packaging>jar</packaging>
+  
+  <developers>
+    <developer>
+      <name>Nebalus</name>    
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>Europe/Berlin</timezone>
+    </developer>
+  </developers>
+  
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>https://www.opensource.org/licenses/mit/</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  
+  <properties>
+	<!-- Project properties -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.jdkVersion>1.16</project.jdkVersion>
+    
+    <maven.compiler.release>16</maven.compiler.release>
+    <maven.compiler.source>16</maven.compiler.source>
+    <maven.compiler.target>16</maven.compiler.target>
+  </properties>
+  
+  <build>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <scriptSourceDirectory>src/main/scripts</scriptSourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
+    <outputDirectory>target/classes</outputDirectory>
+    <testOutputDirectory>target/test-classes</testOutputDirectory>
+
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        <configuration>
+          <release>16</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
