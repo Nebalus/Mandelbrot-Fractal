@@ -58,7 +58,7 @@ public class Window {
 		jFrame.setName("Mandelbrot Fractal");
 		jFrame.setUndecorated(false);
 		jFrame.setAlwaysOnTop(true);
-		jFrame.setResizable(false);
+		jFrame.setResizable(true);
 		jFrame.setPreferredSize(new Dimension(FractalConfig.WINDOW_WIDTH, FractalConfig.WINDOW_HEIGTH));
 		jFrame.pack();
 		
