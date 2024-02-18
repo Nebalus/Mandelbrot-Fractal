@@ -1,4 +1,4 @@
-package de.nebalus.mandelbrotfractal.ui.inputs;
+package de.nebalus.mandelbrotfractal.ui.userinputs;
 
 import java.awt.Point;
 import java.util.concurrent.ConcurrentHashMap;
