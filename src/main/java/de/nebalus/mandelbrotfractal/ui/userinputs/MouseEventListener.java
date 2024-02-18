@@ -3,11 +3,15 @@ package de.nebalus.mandelbrotfractal.ui.userinputs;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import de.nebalus.mandelbrotfractal.ui.Window;
+
 public class MouseEventListener extends MouseAdapter {
 
+	private final Window window;
 	private final InputState inputState;
 
-	public MouseEventListener(InputState inputState) {
+	public MouseEventListener(Window window, InputState inputState) {
+		this.window = window;
 		this.inputState = inputState;
 	}
 
