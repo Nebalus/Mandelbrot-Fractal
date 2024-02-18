@@ -1,5 +1,7 @@
 package de.nebalus.mandelbrotfractal.ui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
@@ -24,7 +26,17 @@ public class WindowCanvas extends JPanel {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		
-		g.drawImage(renderer.render(), 0, 0, null);
+		MandelbrotRenderer mbRenderer = (MandelbrotRenderer) renderer;
+		
+		g.drawImage(mbRenderer.render(), 0, 0, null);
+		
+		g.setFont(new Font("Ink Free", Font.BOLD, 20));
+		g.setColor(Color.DARK_GRAY);
+
+		g.drawString("iterations: " + mbRenderer.getMaxIterations(), 10, g.getFont().getSize() + 10);
+		g.drawString("zoom: " + mbRenderer.getZoom(), 10, g.getFont().getSize() * 2 + 20);
+		g.drawString("xOffset: " + mbRenderer.getXOffset(), 10, g.getFont().getSize() * 3 + 30);
+		g.drawString("yOffset: " + mbRenderer.getYOffset(), 10, g.getFont().getSize() * 4 + 40);
 		
 		Toolkit.getDefaultToolkit().sync();
 		g.dispose();
