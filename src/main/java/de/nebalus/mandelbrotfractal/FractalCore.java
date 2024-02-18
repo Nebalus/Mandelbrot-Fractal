@@ -1,6 +1,8 @@
 package de.nebalus.mandelbrotfractal;
 
-import de.nebalus.mandelbrotfractal.generation.FractalHelper;
+import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
+import de.nebalus.mandelbrotfractal.ui.Window;
+import de.nebalus.mandelbrotfractal.ui.WindowCanvas;
 
 public class FractalCore {
 
@@ -10,9 +12,21 @@ public class FractalCore {
 		fractalApp = new FractalApp();
 	}
 	
-	public static void main(String[] args) 
+	public static void main(String[] args) throws InterruptedException 
 	{
-		fractalApp.showWindow();
+		Window window = fractalApp.getWindow();
+		window.showWindow(true);
+		
+		WindowCanvas canvas = window.getCanvas();
+		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getFractalRenderer();
+		
+		while (renderer.getMaxIterations() < 300) {
+			renderer.addMaxIterations();
+			canvas.repaint();
+			
+			Thread.sleep(50l);
+		}
+		
 	}
 	
 }

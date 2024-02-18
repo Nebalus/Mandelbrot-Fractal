@@ -10,7 +10,7 @@ public class FractalApp {
 		this.window = new Window();
 	}
 	
-	public void showWindow() {
-		window.showWindow(true);
+	public Window getWindow() {
+		return window;
 	}
 }

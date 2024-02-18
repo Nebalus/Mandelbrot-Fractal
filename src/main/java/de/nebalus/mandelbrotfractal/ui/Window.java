@@ -2,6 +2,9 @@ package de.nebalus.mandelbrotfractal.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Frame;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
@@ -12,14 +15,12 @@ import de.nebalus.mandelbrotfractal.FractalConfig;
 import de.nebalus.mandelbrotfractal.ui.userinputs.InputState;
 import de.nebalus.mandelbrotfractal.ui.userinputs.KeyEventListener;
 import de.nebalus.mandelbrotfractal.ui.userinputs.MouseEventListener;
-import de.nebalus.mandelbrotfractal.ui.userinputs.WindowEventListener;
 
 public class Window {
 
 	// Listener
 	private final KeyEventListener keyListener;
 	private final MouseEventListener mouseListener;
-	private final WindowEventListener windowListener;
 	
 	// Cache
 	private final InputState inputState;
@@ -30,12 +31,14 @@ public class Window {
 	
 	public Window()
 	{
+		GraphicsEnvironment graphicsEnviroment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsDevice graphicsDevice = graphicsEnviroment.getDefaultScreenDevice();
+		
 		inputState = new InputState();
 		
 		// Init JFrame Event Listeners
-		keyListener = new KeyEventListener(inputState);
-		mouseListener = new MouseEventListener(inputState);
-		windowListener = new WindowEventListener(inputState);
+		keyListener = new KeyEventListener(this, inputState);
+		mouseListener = new MouseEventListener(this, inputState);
 		
 		// Init Window Component Objects
 		jFrame = new JFrame();
@@ -45,10 +48,6 @@ public class Window {
 		jFrame.add(canvas);
 		
 		// JFrame Listeners
-		jFrame.addWindowFocusListener(windowListener);
-		jFrame.addWindowListener(windowListener);
-		jFrame.addWindowStateListener(windowListener);
-
 		canvas.addMouseMotionListener(mouseListener);
 		canvas.addMouseListener(mouseListener);
 		canvas.addKeyListener(keyListener);
@@ -58,20 +57,26 @@ public class Window {
 		jFrame.setTitle("Mandelbrot Fractal");
 		jFrame.setName("Mandelbrot Fractal");
 		jFrame.setUndecorated(false);
-		jFrame.setAlwaysOnTop(false);
+		jFrame.setAlwaysOnTop(true);
 		jFrame.setResizable(false);
 		jFrame.setPreferredSize(new Dimension(FractalConfig.WINDOW_WIDTH, FractalConfig.WINDOW_HEIGTH));
 		jFrame.pack();
 		
 		// ContentPane deklaration
-		contentPane.setBackground(Color.CYAN);
+		contentPane.setBackground(Color.BLACK);
 
 		// Canvas dekaration
 		canvas.setBackground(Color.BLACK);
 		canvas.setLayout(new GridBagLayout());
-		canvas.setPreferredSize(new Dimension(FractalConfig.WINDOW_WIDTH, FractalConfig.WINDOW_HEIGTH));
+		canvas.setPreferredSize(new Dimension(FractalConfig.CANVAS_WIDTH, FractalConfig.CANVAS_HEIGTH));
 		canvas.setFocusable(true);
 
+		if (graphicsDevice.isFullScreenSupported()) {
+			graphicsDevice.setFullScreenWindow(jFrame);
+		} else {
+			jFrame.setExtendedState(Frame.MAXIMIZED_BOTH);
+		}
+		
 		// Centers the window in the middle of the screen
 		jFrame.setLocationRelativeTo(null);
 	}

@@ -10,11 +10,6 @@ public class InputState {
 	protected final Point mouseCords;
 
 	protected boolean isMouseOnCanvas;
-	protected boolean isWindowFocused;
-	protected boolean isWindowIconified;
-	protected boolean isWindowOpened;
-	protected boolean isWindowClosed;
-	protected boolean isWindowClosing;
 
 	public InputState() {
 		mouseKeyCache = new ConcurrentHashMap<>();
@@ -23,13 +18,8 @@ public class InputState {
 		mouseCords = new Point(0, 0);
 
 		isMouseOnCanvas = false;
-		isWindowFocused = false;
-		isWindowIconified = false;
-		isWindowOpened = false;
-		isWindowClosed = false;
-		isWindowClosing = false;
 	}
-
+	
 	/**
 	 * @return the mouseKeyCache
 	 */
@@ -56,40 +46,5 @@ public class InputState {
 	 */
 	public boolean isMouseOnCanvas() {
 		return isMouseOnCanvas;
-	}
-
-	/**
-	 * @return the isWindowFocused
-	 */
-	public boolean isWindowFocused() {
-		return isWindowFocused;
-	}
-
-	/**
-	 * @return the isWindowIconified
-	 */
-	public boolean isWindowIconified() {
-		return isWindowIconified;
-	}
-
-	/**
-	 * @return the isWindowOpened
-	 */
-	public boolean isWindowOpened() {
-		return isWindowOpened;
-	}
-
-	/**
-	 * @return the isWindowClosed
-	 */
-	public boolean isWindowClosed() {
-		return isWindowClosed;
-	}
-
-	/**
-	 * @return the isWindowClosing
-	 */
-	public boolean isWindowClosing() {
-		return isWindowClosing;
 	}
 }
