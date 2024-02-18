@@ -12,7 +12,6 @@ public class MandelbrotRenderer implements Renderer{
 	public static final double DEFAULT_X_OFFSET = 0.0d; 
 	public static final double DEFAULT_Y_OFFSET = 0.0d; 
 	
-	
 	private final int frameWidth;
 	private final int frameHeigth;
 	
@@ -31,6 +30,18 @@ public class MandelbrotRenderer implements Renderer{
 		this.yOffset = DEFAULT_Y_OFFSET;
 	}
 
+	public double getXOffset() {
+		return xOffset;
+	}
+	
+	public double getYOffset() {
+		return yOffset;
+	}
+	
+	public double getZoom() {
+		return zoom;
+	}
+	
 	public void zoomIn() {
 		zoom *= DEFAULT_ZOOM_IN_FACTOR;
 	}
@@ -76,7 +87,7 @@ public class MandelbrotRenderer implements Renderer{
 					img.setRGB(x, y, new Color(0, 0, a).getRGB());
 				} else if (0.3f <= a && a < 0.6f) {
 					img.setRGB(x, y, new Color(0, a, 0).getRGB());
-				} else if (0.6f <= a && a < 0.9f) {
+				} else if (0.6f <= a && a < 0.91f) {
 					img.setRGB(x, y, new Color(a, 0, 0).getRGB());
 				} else {
 					img.setRGB(x, y, new Color(a, a, a).getRGB());
