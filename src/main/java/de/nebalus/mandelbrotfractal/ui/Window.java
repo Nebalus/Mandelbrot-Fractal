@@ -2,8 +2,6 @@ package de.nebalus.mandelbrotfractal.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.GridBagLayout;
 
 import javax.swing.JFrame;
@@ -11,17 +9,13 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
 import de.nebalus.mandelbrotfractal.FractalConfig;
-import de.nebalus.mandelbrotfractal.ui.inputs.InputState;
-import de.nebalus.mandelbrotfractal.ui.inputs.KeyEventListener;
-import de.nebalus.mandelbrotfractal.ui.inputs.MouseEventListener;
-import de.nebalus.mandelbrotfractal.ui.inputs.WindowEventListener;
+import de.nebalus.mandelbrotfractal.ui.userinputs.InputState;
+import de.nebalus.mandelbrotfractal.ui.userinputs.KeyEventListener;
+import de.nebalus.mandelbrotfractal.ui.userinputs.MouseEventListener;
+import de.nebalus.mandelbrotfractal.ui.userinputs.WindowEventListener;
 
 public class Window {
 
-	// Basic
-	private final GraphicsEnvironment graphicsEnviroment;
-	private final GraphicsDevice graphicsDevice;
-	
 	// Listener
 	private final KeyEventListener keyListener;
 	private final MouseEventListener mouseListener;
@@ -36,15 +30,12 @@ public class Window {
 	
 	public Window()
 	{
-		graphicsEnviroment = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		graphicsDevice = graphicsEnviroment.getDefaultScreenDevice();
-		
 		inputState = new InputState();
 		
 		// Init JFrame Event Listeners
-		keyListener = new KeyEventListener(this, inputState);
-		mouseListener = new MouseEventListener(this, inputState);
-		windowListener = new WindowEventListener(this, inputState);
+		keyListener = new KeyEventListener(inputState);
+		mouseListener = new MouseEventListener(inputState);
+		windowListener = new WindowEventListener(inputState);
 		
 		// Init Window Component Objects
 		jFrame = new JFrame();
@@ -73,7 +64,7 @@ public class Window {
 		jFrame.pack();
 		
 		// ContentPane deklaration
-		contentPane.setBackground(Color.BLACK);
+		contentPane.setBackground(Color.CYAN);
 
 		// Canvas dekaration
 		canvas.setBackground(Color.BLACK);
@@ -83,10 +74,12 @@ public class Window {
 
 		// Centers the window in the middle of the screen
 		jFrame.setLocationRelativeTo(null);
-		
-		jFrame.setVisible(true);
 	}
 
+	public void showWindow(boolean visibility) {
+		jFrame.setVisible(visibility);
+	}
+	
 	public WindowCanvas getCanvas() {
 		return canvas;
 	}

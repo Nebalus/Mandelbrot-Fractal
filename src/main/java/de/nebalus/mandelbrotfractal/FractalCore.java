@@ -1,13 +1,18 @@
 package de.nebalus.mandelbrotfractal;
 
-import de.nebalus.mandelbrotfractal.ui.Window;
+import de.nebalus.mandelbrotfractal.generation.FractalHelper;
 
 public class FractalCore {
 
-	public static void main(String[] args) {
-		
-		
-		new Window();
+	private static final FractalApp fractalApp;
+	
+	static {
+		fractalApp = new FractalApp();
+	}
+	
+	public static void main(String[] args) 
+	{
+		fractalApp.showWindow();
 	}
 	
 }

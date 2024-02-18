@@ -1,17 +1,13 @@
-package de.nebalus.mandelbrotfractal.ui.inputs;
+package de.nebalus.mandelbrotfractal.ui.userinputs;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-import de.nebalus.mandelbrotfractal.ui.Window;
-
 public class WindowEventListener extends WindowAdapter {
 
-	private final Window window;
 	private final InputState inputState;
 
-	public WindowEventListener(Window window, InputState inputState) {
-		this.window = window;
+	public WindowEventListener(InputState inputState) {
 		this.inputState = inputState;
 	}
 

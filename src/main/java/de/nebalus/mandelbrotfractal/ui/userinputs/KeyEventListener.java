@@ -1,17 +1,13 @@
-package de.nebalus.mandelbrotfractal.ui.inputs;
+package de.nebalus.mandelbrotfractal.ui.userinputs;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import de.nebalus.mandelbrotfractal.ui.Window;
-
 public class KeyEventListener extends KeyAdapter {
 
-	private final Window window;
 	private final InputState inputState;
 
-	public KeyEventListener(Window window, InputState inputState) {
-		this.window = window;
+	public KeyEventListener(InputState inputState) {
 		this.inputState = inputState;
 	}
 
