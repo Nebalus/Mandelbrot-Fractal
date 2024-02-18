@@ -74,14 +74,14 @@ public class MandelbrotRenderer implements Renderer{
 				double zImaginary = 0.0d;
 				
 				int iteration = 0;
-				while (iteration < maxIterations && zReal * zReal + zImaginary * zImaginary <= 4) {
+				while (iteration < maxIterations && zReal * zReal + zImaginary * zImaginary <= 3.5) {
 					double temp = zReal * zReal - zImaginary * zImaginary + cReal;
 					zImaginary = 2 * zReal * zImaginary + cImaginary;
 					zReal = temp;
 					iteration++;
 				}
 				
-				float a = 1.0f - ((float) iteration / maxIterations);
+				float a = ((float) iteration / maxIterations);
 				
 				if(0.0f <= a && a < 0.3f) {
 					img.setRGB(x, y, new Color(0, 0, a).getRGB());
@@ -92,6 +92,8 @@ public class MandelbrotRenderer implements Renderer{
 				} else {
 					img.setRGB(x, y, new Color(a, a, a).getRGB());
 				}
+	
+				img.setRGB(x, y, new Color(a, a, a).getRGB());
 			}
 		}
 		return img;
