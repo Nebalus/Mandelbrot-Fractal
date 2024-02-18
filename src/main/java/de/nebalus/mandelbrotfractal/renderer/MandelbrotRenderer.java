@@ -81,7 +81,7 @@ public class MandelbrotRenderer implements Renderer{
 					iteration++;
 				}
 				
-				float a = ((float) iteration / maxIterations);
+				float a = 1.0f - ((float) iteration / maxIterations);
 				
 				if(0.0f <= a && a < 0.3f) {
 					img.setRGB(x, y, new Color(0, 0, a).getRGB());
