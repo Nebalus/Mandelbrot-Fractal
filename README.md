@@ -11,7 +11,7 @@ This project provides a user interface to explore the wonders of the Mandelbrot-
 ## Controls
   Also supports **mouse** drag- and scroll events
  
- - 1 Key = Toggles the debug info
+ - 1 Key = **Toggles** the debug info
  - 2 - 4 Key = Switches threw some predefined colorpallets
  - E Key = Zooms **In**
  - Q Key = Zooms **Out**
