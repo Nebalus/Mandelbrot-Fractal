@@ -1,0 +1,1 @@
+package de.nebalus.mandelbrotfractal.renderer.filter;
