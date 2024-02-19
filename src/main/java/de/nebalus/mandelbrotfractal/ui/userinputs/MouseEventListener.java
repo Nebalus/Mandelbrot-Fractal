@@ -1,51 +1,67 @@
 package de.nebalus.mandelbrotfractal.ui.userinputs;
 
+import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseWheelEvent;
 
+import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
 import de.nebalus.mandelbrotfractal.ui.Window;
+import de.nebalus.mandelbrotfractal.ui.WindowCanvas;
 
-public class MouseEventListener extends MouseAdapter {
+public class MouseEventListener extends MouseAdapter
+{
 
 	private final Window window;
-	private final InputState inputState;
 
-	public MouseEventListener(Window window, InputState inputState) {
+	private final Point mouseCords;
+
+	public MouseEventListener(Window window)
+	{
 		this.window = window;
-		this.inputState = inputState;
+
+		this.mouseCords = new Point(0, 0);
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
-		if (!inputState.mouseKeyCache.containsKey(e.getButton())) {
-			inputState.mouseKeyCache.put(e.getButton(), System.currentTimeMillis());
+	public void mouseWheelMoved(MouseWheelEvent e)
+	{
+		WindowCanvas canvas = window.getCanvas();
+		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getFractalRenderer();
+
+		if (e.getPreciseWheelRotation() < 0.0d) {
+			renderer.zoomIn();
+		} else {
+			renderer.zoomOut();
 		}
+		canvas.repaint();
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
-		if (inputState.mouseKeyCache.containsKey(e.getButton())) {
-			inputState.mouseKeyCache.remove(e.getButton());
-		}
+	public void mouseMoved(MouseEvent e)
+	{
+		mouseCords.setLocation(e.getX(), e.getY());
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-		inputState.isMouseOnCanvas = true;
-	}
+	public void mouseDragged(MouseEvent e)
+	{
+		final int oldX = (int) mouseCords.getLocation().getX();
+		final int oldY = (int) mouseCords.getLocation().getY();
 
-	@Override
-	public void mouseExited(MouseEvent e) {
-		inputState.isMouseOnCanvas = false;
-	}
+		WindowCanvas canvas = window.getCanvas();
+		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getFractalRenderer();
 
-	@Override
-	public void mouseMoved(MouseEvent e) {
-		inputState.mouseCords.setLocation(e.getX(), e.getY());
-	}
+		final int xTrace = e.getX() - oldX;
+		final int yTrace = e.getY() - oldY;
 
-	@Override
-	public void mouseDragged(MouseEvent e) {
-		inputState.mouseCords.setLocation(e.getX(), e.getY());
+		final double xTracePercent = ((double) xTrace / (double) renderer.getFrameWidth());
+		final double yTracePercent = ((double) yTrace / (double) renderer.getFrameHeigth());
+
+		renderer.setXOffset(renderer.getXOffset() - (renderer.getZoom() * xTracePercent));
+		renderer.setYOffset(renderer.getYOffset() - (renderer.getZoom() * yTracePercent));
+
+		mouseCords.setLocation(e.getX(), e.getY());
+		canvas.repaint();
 	}
 }
