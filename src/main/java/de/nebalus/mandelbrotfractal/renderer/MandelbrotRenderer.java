@@ -51,7 +51,7 @@ public class MandelbrotRenderer {
 		
 		List<Thread> workerThreads = new LinkedList<>();
 		
-		final int maxThreads = 20;
+		final int maxThreads = Runtime.getRuntime().availableProcessors();
 		
 		for(int i = 1; i <= maxThreads; i++) {
 			MandelbrotRenderTask task = new MandelbrotRenderTask(img, this, (frameWidth / maxThreads) * (i - 1), (frameWidth / maxThreads) * i, 0, frameHeigth);
