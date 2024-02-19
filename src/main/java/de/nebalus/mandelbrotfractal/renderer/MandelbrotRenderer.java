@@ -7,7 +7,7 @@ import java.util.List;
 import de.nebalus.mandelbrotfractal.renderer.filter.RainbowFilter;
 import de.nebalus.mandelbrotfractal.renderer.filter.Filter;
 
-public class MandelbrotRenderer implements Renderer{
+public class MandelbrotRenderer {
 	
 	public static final int DEFAULT_FRAME_WIDTH = 90;
 	public static final int DEFAULT_FRAME_HEIGTH = 60;
@@ -45,7 +45,6 @@ public class MandelbrotRenderer implements Renderer{
 		return currentFilter;
 	}
 	
-	@Override
 	public synchronized BufferedImage render() 
 	{
 		BufferedImage img = getBaseImage();

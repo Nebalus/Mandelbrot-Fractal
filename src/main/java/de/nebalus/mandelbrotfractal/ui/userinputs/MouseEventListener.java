@@ -27,7 +27,7 @@ public class MouseEventListener extends MouseAdapter
 	public void mouseWheelMoved(MouseWheelEvent e)
 	{
 		WindowCanvas canvas = window.getCanvas();
-		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getFractalRenderer();
+		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getMandelbrotRenderer();
 
 		if (e.getPreciseWheelRotation() < 0.0d) {
 			renderer.zoomIn();
@@ -50,7 +50,7 @@ public class MouseEventListener extends MouseAdapter
 		final int oldY = (int) mouseCords.getLocation().getY();
 
 		WindowCanvas canvas = window.getCanvas();
-		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getFractalRenderer();
+		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getMandelbrotRenderer();
 
 		final int xTrace = e.getX() - oldX;
 		final int yTrace = e.getY() - oldY;

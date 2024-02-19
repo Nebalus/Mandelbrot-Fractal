@@ -26,7 +26,7 @@ public class KeyEventListener extends KeyAdapter
 		System.out.println("KeyPressed: " + e.getKeyChar() + " Code:" + e.getKeyCode());
 
 		WindowCanvas canvas = window.getCanvas();
-		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getFractalRenderer();
+		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getMandelbrotRenderer();
 
 		boolean shouldRepaint = true;
 		
