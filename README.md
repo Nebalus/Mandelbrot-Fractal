@@ -11,16 +11,16 @@ This project provides a multithreaded user interface to explore the wonders of t
 ## Controls
   Also supports **mouse** drag- and scroll events
  
- - 1 Key = **Toggles** the debug info
- - 2 - 4 Key = Switches threw some predefined colorpallets
- - E Key = Zooms **In**
- - Q Key = Zooms **Out**
- - R Key = **Higheres** the maxIterations (Higher Resolution)
- - F Key = **Lowers** the maxIterations (Lower Resolution)
- - W Key = Moves the camera **up**
- - S Key = Moves the camera **down**
- - A Key = Moves the camera to the **left**
- - D Key = Moves the camera to the **right**
+ - <kbd>1</kbd> = **Toggles** the debug info
+ - <kbd>2</kbd>, <kbd>3</kbd>, <kbd>4</kbd> = Switches threw some predefined colorpallets
+ - <kbd>E</kbd> = Zooms **In**
+ - <kbd>Q</kbd> = Zooms **Out**
+ - <kbd>R</kbd> = **Higheres** the maxIterations (Higher Resolution)
+ - <kbd>F</kbd> = **Lowers** the maxIterations (Lower Resolution)
+ - <kbd>W</kbd> = Moves the camera **up**
+ - <kbd>S</kbd> = Moves the camera **down**
+ - <kbd>A</kbd> = Moves the camera to the **left**
+ - <kbd>D</kbd> = Moves the camera to the **right**
 
 # Preview Images
 <p float="left">
