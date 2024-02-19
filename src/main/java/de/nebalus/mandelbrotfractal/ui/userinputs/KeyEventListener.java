@@ -4,6 +4,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
+import de.nebalus.mandelbrotfractal.renderer.filter.BlackWhiteFilter;
+import de.nebalus.mandelbrotfractal.renderer.filter.RainbowFilter;
+import de.nebalus.mandelbrotfractal.renderer.filter.TestFilter;
 import de.nebalus.mandelbrotfractal.ui.Window;
 import de.nebalus.mandelbrotfractal.ui.WindowCanvas;
 
@@ -25,7 +28,25 @@ public class KeyEventListener extends KeyAdapter
 		WindowCanvas canvas = window.getCanvas();
 		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getFractalRenderer();
 
+		boolean shouldRepaint = true;
+		
 		switch (e.getKeyCode()) {
+			case 49:
+				if(canvas.showDebug) {
+					canvas.showDebug = false;
+					break;
+				}
+				canvas.showDebug = true;
+				break;
+			case 50:
+				renderer.setFilter(new TestFilter());
+				break;
+			case 51:
+				renderer.setFilter(new RainbowFilter());
+				break;
+			case 52:
+				renderer.setFilter(new BlackWhiteFilter());
+				break;
 			case 38:
 			case 82:
 				renderer.addMaxIterations(25);
@@ -62,9 +83,12 @@ public class KeyEventListener extends KeyAdapter
 				System.out.println(" X + " + renderer.yOffset);
 				break;
 			default:
+				shouldRepaint = false;
 				break;
 		}
 
-		window.getCanvas().repaint();
+		if (shouldRepaint) {
+			window.getCanvas().repaint();
+		}
 	}
 }
