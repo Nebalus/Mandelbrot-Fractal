@@ -8,36 +8,35 @@ import javax.swing.JPanel;
 
 import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
 
-public class WindowCanvas extends JPanel {
+public class WindowCanvas extends JPanel
+{
 
 	private static final long serialVersionUID = 8861427947706270401L;
-	
-	private MandelbrotRenderer renderer;
-	
+
+	private final MandelbrotRenderer renderer;
+
 	public boolean showDebug;
-	
-	public WindowCanvas() {
-		this.renderer = new MandelbrotRenderer(900, 600);
-		
+
+	public WindowCanvas(int windowWidth, int windowHeigth)
+	{
+		this.renderer = new MandelbrotRenderer(windowWidth, windowHeigth);
+
 		this.showDebug = false;
-		
+
 		super.setDoubleBuffered(true);
 	}
-	
-	public void setMandelbrotRenderer(MandelbrotRenderer newRenderer) {
-		renderer = newRenderer;
-	}
-	
+
 	@Override
-	public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g)
+	{
 		super.paintComponent(g);
-			
+
 		MandelbrotRenderer mbRenderer = (MandelbrotRenderer) renderer;
-		
+
 		Long startProccesTimestamp = System.nanoTime();
-		g.drawImage(mbRenderer.render(), 0, 0, null);		
+		g.drawImage(mbRenderer.render(), 0, 0, null);
 		Long proccesTimeNanos = System.nanoTime() - startProccesTimestamp;
-		
+
 		if (showDebug) {
 			g.setFont(new Font("Ink Free", Font.BOLD, 20));
 			g.setColor(Color.WHITE);
@@ -52,12 +51,14 @@ public class WindowCanvas extends JPanel {
 		Toolkit.getDefaultToolkit().sync();
 		g.dispose();
 	}
-	
-	public void repaint() {
+
+	public void repaint()
+	{
 		super.repaint();
 	}
-	
-	public MandelbrotRenderer getMandelbrotRenderer() {
+
+	public MandelbrotRenderer getMandelbrotRenderer()
+	{
 		return renderer;
 	}
 }
