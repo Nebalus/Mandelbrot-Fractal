@@ -24,7 +24,7 @@ public class FractalCore {
 			renderer.addMaxIterations();
 			canvas.repaint();
 			
-			Thread.sleep(50l);
+			Thread.sleep(75l);
 		}
 	}
 }
