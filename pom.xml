@@ -31,9 +31,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.jdkVersion>1.8</project.jdkVersion>
     
-    <maven.compiler.release>8</maven.compiler.release>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
+    <maven.compiler.release>1.8</maven.compiler.release>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
   </properties>
   
   <build>
@@ -46,9 +46,10 @@
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
+        <version>3.12.1</version>
         <configuration>
-          <release>8</release>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>
