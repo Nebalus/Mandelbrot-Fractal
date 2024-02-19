@@ -17,9 +17,13 @@ public class WindowCanvas extends JPanel {
 	private final Window window;
 	private final Renderer renderer;
 	
+	public boolean showDebug;
+	
 	public WindowCanvas(Window window) {
 		this.window = window;
 		this.renderer = new MandelbrotRenderer(FractalConfig.CANVAS_WIDTH, FractalConfig.CANVAS_HEIGTH);
+		
+		this.showDebug = false;
 		
 		super.setDoubleBuffered(true);
 	}
@@ -27,23 +31,24 @@ public class WindowCanvas extends JPanel {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+			
 		MandelbrotRenderer mbRenderer = (MandelbrotRenderer) renderer;
 		
-//		Long startProccesTimestamp = System.nanoTime();
-		g.drawImage(mbRenderer.render(), 0, 0, null);
+		Long startProccesTimestamp = System.nanoTime();
+		g.drawImage(mbRenderer.render(), 0, 0, null);		
+		Long proccesTimeNanos = System.nanoTime() - startProccesTimestamp;
 		
-//		Long proccesTimeNanos = System.nanoTime() - startProccesTimestamp;
-//		
-//		g.setFont(new Font("Ink Free", Font.BOLD, 20));
-//		g.setColor(Color.WHITE);
-//
-//		g.drawString("iterations: " + mbRenderer.getMaxIterations(), 10, g.getFont().getSize() + 10);
-//		g.drawString("zoom: " + mbRenderer.getZoom(), 10, g.getFont().getSize() * 2 + 20);
-//		g.drawString("xOffset: " + mbRenderer.getXOffset(), 10, g.getFont().getSize() * 3 + 30);
-//		g.drawString("yOffset: " + mbRenderer.getYOffset(), 10, g.getFont().getSize() * 4 + 40);
-//		g.drawString("frameRendertimeNanos: " + proccesTimeNanos, 10, g.getFont().getSize() * 5 + 50);
-//		g.drawString("frameRendertimeMillis: " + (proccesTimeNanos / 1000000), 10, g.getFont().getSize() * 6 + 60);
+		if (showDebug) {
+			g.setFont(new Font("Ink Free", Font.BOLD, 20));
+			g.setColor(Color.WHITE);
+
+			g.drawString("iterations: " + mbRenderer.getMaxIterations(), 10, g.getFont().getSize() + 10);
+			g.drawString("zoom: " + mbRenderer.getZoom(), 10, g.getFont().getSize() * 2 + 20);
+			g.drawString("xOffset: " + mbRenderer.getXOffset(), 10, g.getFont().getSize() * 3 + 30);
+			g.drawString("yOffset: " + mbRenderer.getYOffset(), 10, g.getFont().getSize() * 4 + 40);
+			g.drawString("frameRendertimeNanos: " + proccesTimeNanos, 10, g.getFont().getSize() * 5 + 50);
+			g.drawString("frameRendertimeMillis: " + (proccesTimeNanos / 1000000), 10, g.getFont().getSize() * 6 + 60);
+		}
 		Toolkit.getDefaultToolkit().sync();
 		g.dispose();
 	}

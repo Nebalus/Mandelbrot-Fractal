@@ -4,6 +4,9 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.List;
 
+import de.nebalus.mandelbrotfractal.renderer.filter.RainbowFilter;
+import de.nebalus.mandelbrotfractal.renderer.filter.Filter;
+
 public class MandelbrotRenderer implements Renderer{
 	
 	public static final int DEFAULT_FRAME_WIDTH = 90;
@@ -14,21 +17,32 @@ public class MandelbrotRenderer implements Renderer{
 	public static final double DEFAULT_ZOOM_OUT_FACTOR = 1.10d; 
 	public static final double DEFAULT_X_OFFSET = 0.0d; 
 	public static final double DEFAULT_Y_OFFSET = 0.0d; 
+	public static final Filter DEFAULT_FILTER = new RainbowFilter();
 	
 	private int frameWidth;
 	private int frameHeigth;
 	private int maxIterations;
 	private double zoom;
+	private Filter currentFilter;
 	public double xOffset;
 	public double yOffset;
 	
 	public MandelbrotRenderer(int frameWidth, int frameHeigth) {
-		this.frameWidth = frameWidth;
-		this.frameHeigth = frameHeigth;
+		setFrameWidth(frameWidth);
+		setFrameHeigth(frameHeigth);
 		setMaxIterations(DEFAULT_MAX_ITERATIONS);
 		setZoom(DEFAULT_ZOOM);
+		setFilter(DEFAULT_FILTER);
 		setXOffset(DEFAULT_X_OFFSET);
 		setYOffset(DEFAULT_Y_OFFSET);
+	}
+	
+	public void setFilter(Filter newFilter) {
+		currentFilter = newFilter;
+	}
+	
+	public Filter getFilter() {
+		return currentFilter;
 	}
 	
 	@Override
@@ -38,14 +52,14 @@ public class MandelbrotRenderer implements Renderer{
 		
 		List<Thread> workerThreads = new LinkedList<>();
 		
-		final int maxThreads = 10;
+		final int maxThreads = 20;
 		
 		for(int i = 1; i <= maxThreads; i++) {
 			MandelbrotRenderTask task = new MandelbrotRenderTask(img, this, (frameWidth / maxThreads) * (i - 1), (frameWidth / maxThreads) * i, 0, frameHeigth);
 			Thread workerThread = new Thread(task);
 			workerThread.start();
 			workerThreads.add(workerThread);
-		}
+		}	
 		
 		workerThreads.forEach((thread) -> {
 			try {
