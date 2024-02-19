@@ -1,6 +1,6 @@
 # Mandelbrot-Fractal
 
-This project provides a user interface to explore the wonders of the Mandelbrot-set fractal.
+This project provides a multithreaded user interface to explore the wonders of the Mandelbrot-set fractal.
 
 ## Requirements
  - Java Runtime Enviroment **8** (A higher version also works)
