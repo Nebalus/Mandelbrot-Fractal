@@ -4,8 +4,8 @@ import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.List;
 
-import de.nebalus.mandelbrotfractal.renderer.filter.RainbowFilter;
-import de.nebalus.mandelbrotfractal.renderer.filter.FilterInterface;
+import de.nebalus.mandelbrotfractal.renderer.colorschemes.ColorSchemeInterface;
+import de.nebalus.mandelbrotfractal.renderer.colorschemes.RainbowScheme;
 
 public class MandelbrotRenderer
 {
@@ -18,7 +18,7 @@ public class MandelbrotRenderer
 	public static final double DEFAULT_ZOOM_OUT_FACTOR;
 	public static final double DEFAULT_X_OFFSET;
 	public static final double DEFAULT_Y_OFFSET;
-	public static final FilterInterface DEFAULT_FILTER;
+	public static final ColorSchemeInterface DEFAULT_COLOR_SCHEME;
 
 	static {
 		DEFAULT_FRAME_WIDTH = 90;
@@ -29,14 +29,14 @@ public class MandelbrotRenderer
 		DEFAULT_ZOOM_OUT_FACTOR = 1.1d;
 		DEFAULT_X_OFFSET = 0.0d;
 		DEFAULT_Y_OFFSET = 0.0d;
-		DEFAULT_FILTER = new RainbowFilter();
+		DEFAULT_COLOR_SCHEME = new RainbowScheme();
 	}
 	
 	private int frameWidth;
 	private int frameHeigth;
 	private int maxIterations;
 	private double zoom;
-	private FilterInterface currentFilter;
+	private ColorSchemeInterface colorScheme;
 	private double xOffset;
 	private double yOffset;
 
@@ -46,19 +46,19 @@ public class MandelbrotRenderer
 		setFrameHeigth(frameHeigth);
 		setMaxIterations(DEFAULT_MAX_ITERATIONS);
 		setZoom(DEFAULT_ZOOM);
-		setFilter(DEFAULT_FILTER);
+		setFilter(DEFAULT_COLOR_SCHEME);
 		setXOffset(DEFAULT_X_OFFSET);
 		setYOffset(DEFAULT_Y_OFFSET);
 	}
 
-	public void setFilter(FilterInterface newFilter)
+	public void setFilter(ColorSchemeInterface newColorScheme)
 	{
-		currentFilter = newFilter;
+		colorScheme = newColorScheme;
 	}
 
-	public FilterInterface getFilter()
+	public ColorSchemeInterface getColorScheme()
 	{
-		return currentFilter;
+		return colorScheme;
 	}
 
 	public synchronized BufferedImage render()

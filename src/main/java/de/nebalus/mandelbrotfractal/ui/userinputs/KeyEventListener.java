@@ -4,9 +4,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
-import de.nebalus.mandelbrotfractal.renderer.filter.BlackWhiteFilter;
-import de.nebalus.mandelbrotfractal.renderer.filter.RainbowFilter;
-import de.nebalus.mandelbrotfractal.renderer.filter.TestFilter;
+import de.nebalus.mandelbrotfractal.renderer.colorschemes.BlackWhiteScheme;
+import de.nebalus.mandelbrotfractal.renderer.colorschemes.RainbowScheme;
+import de.nebalus.mandelbrotfractal.renderer.colorschemes.TestScheme;
 import de.nebalus.mandelbrotfractal.ui.Window;
 import de.nebalus.mandelbrotfractal.ui.WindowCanvas;
 
@@ -39,13 +39,13 @@ public class KeyEventListener extends KeyAdapter
 				canvas.showDebug = true;
 				break;
 			case 50:
-				renderer.setFilter(new TestFilter());
+				renderer.setFilter(new TestScheme());
 				break;
 			case 51:
-				renderer.setFilter(new RainbowFilter());
+				renderer.setFilter(new RainbowScheme());
 				break;
 			case 52:
-				renderer.setFilter(new BlackWhiteFilter());
+				renderer.setFilter(new BlackWhiteScheme());
 				break;
 			case 38:
 			case 82:
