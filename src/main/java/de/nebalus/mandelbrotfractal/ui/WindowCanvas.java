@@ -6,26 +6,26 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
 
-import de.nebalus.mandelbrotfractal.FractalConfig;
 import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
-import de.nebalus.mandelbrotfractal.renderer.Renderer;
 
 public class WindowCanvas extends JPanel {
 
 	private static final long serialVersionUID = 8861427947706270401L;
 	
-	private final Window window;
-	private final Renderer renderer;
+	private MandelbrotRenderer renderer;
 	
 	public boolean showDebug;
 	
-	public WindowCanvas(Window window) {
-		this.window = window;
-		this.renderer = new MandelbrotRenderer(FractalConfig.CANVAS_WIDTH, FractalConfig.CANVAS_HEIGTH);
+	public WindowCanvas() {
+		this.renderer = new MandelbrotRenderer(900, 600);
 		
 		this.showDebug = false;
 		
 		super.setDoubleBuffered(true);
+	}
+	
+	public void setMandelbrotRenderer(MandelbrotRenderer newRenderer) {
+		renderer = newRenderer;
 	}
 	
 	@Override
@@ -57,7 +57,7 @@ public class WindowCanvas extends JPanel {
 		super.repaint();
 	}
 	
-	public Renderer getFractalRenderer() {
+	public MandelbrotRenderer getMandelbrotRenderer() {
 		return renderer;
 	}
 }

@@ -2,6 +2,7 @@ package de.nebalus.mandelbrotfractal.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.DisplayMode;
 import java.awt.Frame;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -11,7 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import de.nebalus.mandelbrotfractal.FractalConfig;
+import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
 import de.nebalus.mandelbrotfractal.ui.userinputs.KeyEventListener;
 import de.nebalus.mandelbrotfractal.ui.userinputs.MouseEventListener;
 
@@ -30,6 +31,7 @@ public class Window {
 		// Graphics Enviroment
 		GraphicsEnvironment graphicsEnviroment = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice graphicsDevice = graphicsEnviroment.getDefaultScreenDevice();
+		DisplayMode displayMode = graphicsDevice.getDisplayMode();
 		
 		// Init JFrame Event Listeners
 		keyListener = new KeyEventListener(this);
@@ -39,7 +41,7 @@ public class Window {
 		jFrame = new JFrame();
 		JPanel contentPane = new JPanel(new GridBagLayout());
 		jFrame.setContentPane(contentPane);
-		canvas = new WindowCanvas(this);
+		canvas = new WindowCanvas();
 		jFrame.add(canvas);
 		
 		// JFrame Listeners
@@ -55,7 +57,7 @@ public class Window {
 		jFrame.setUndecorated(false);
 		jFrame.setAlwaysOnTop(true);
 		jFrame.setResizable(true);
-		jFrame.setPreferredSize(new Dimension(FractalConfig.WINDOW_WIDTH, FractalConfig.WINDOW_HEIGTH));
+		jFrame.setPreferredSize(new Dimension(displayMode.getWidth(), displayMode.getHeight()));
 		jFrame.pack();
 		
 		// ContentPane deklaration
@@ -66,8 +68,9 @@ public class Window {
 		canvas.setBackground(Color.BLACK);
 		canvas.setName("MainCanvas");
 		canvas.setLayout(new GridBagLayout());
-		canvas.setPreferredSize(new Dimension(FractalConfig.CANVAS_WIDTH, FractalConfig.CANVAS_HEIGTH));
+		canvas.setPreferredSize(new Dimension(displayMode.getWidth(), displayMode.getHeight()));
 		canvas.setFocusable(true);
+		canvas.setMandelbrotRenderer(new MandelbrotRenderer(displayMode.getWidth(), displayMode.getHeight()));
 
 		if (graphicsDevice.isFullScreenSupported()) {
 			graphicsDevice.setFullScreenWindow(jFrame);

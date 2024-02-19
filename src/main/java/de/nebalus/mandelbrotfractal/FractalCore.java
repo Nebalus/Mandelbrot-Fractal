@@ -18,7 +18,7 @@ public class FractalCore {
 		window.showWindow(true);
 		
 		WindowCanvas canvas = window.getCanvas();
-		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getFractalRenderer();
+		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getMandelbrotRenderer();
 		
 		while (renderer.getMaxIterations() < 50) {
 			renderer.addMaxIterations();
