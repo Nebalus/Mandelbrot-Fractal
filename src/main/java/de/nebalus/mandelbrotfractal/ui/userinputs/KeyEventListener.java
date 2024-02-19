@@ -46,7 +46,7 @@ public class KeyEventListener extends KeyAdapter
 				break;
 
 			case 87:
-				renderer.yOffset -= renderer.getZoom() * 0.3d;
+				renderer.yOffset -= renderer.getZoom() * 0.1d;
 				System.out.println(" Y - " + renderer.yOffset);
 				break;
 			case 65:
