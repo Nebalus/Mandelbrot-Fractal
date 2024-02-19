@@ -12,44 +12,40 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
-import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
 import de.nebalus.mandelbrotfractal.ui.userinputs.KeyEventListener;
 import de.nebalus.mandelbrotfractal.ui.userinputs.MouseEventListener;
 
-public class Window {
+public class Window
+{
 
-	// Listener
-	private final KeyEventListener keyListener;
-	private final MouseEventListener mouseListener;
-	
 	// Window
 	private final JFrame jFrame;
 	private final WindowCanvas canvas;
-	
+
 	public Window()
 	{
 		// Graphics Enviroment
 		GraphicsEnvironment graphicsEnviroment = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		GraphicsDevice graphicsDevice = graphicsEnviroment.getDefaultScreenDevice();
 		DisplayMode displayMode = graphicsDevice.getDisplayMode();
-		
+
 		// Init JFrame Event Listeners
-		keyListener = new KeyEventListener(this);
-		mouseListener = new MouseEventListener(this);
-		
+		KeyEventListener keyListener = new KeyEventListener(this);
+		MouseEventListener mouseListener = new MouseEventListener(this);
+
 		// Init Window Component Objects
 		jFrame = new JFrame();
 		JPanel contentPane = new JPanel(new GridBagLayout());
 		jFrame.setContentPane(contentPane);
-		canvas = new WindowCanvas();
+		canvas = new WindowCanvas(displayMode.getWidth(), displayMode.getHeight());
 		jFrame.add(canvas);
-		
+
 		// JFrame Listeners
 		canvas.addMouseWheelListener(mouseListener);
 		canvas.addMouseMotionListener(mouseListener);
 		canvas.addMouseListener(mouseListener);
 		canvas.addKeyListener(keyListener);
-		
+
 		// JFrame deklaration
 		jFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		jFrame.setTitle("Mandelbrot Fractal");
@@ -59,7 +55,7 @@ public class Window {
 		jFrame.setResizable(true);
 		jFrame.setPreferredSize(new Dimension(displayMode.getWidth(), displayMode.getHeight()));
 		jFrame.pack();
-		
+
 		// ContentPane deklaration
 		contentPane.setName("ContentPane");
 		contentPane.setBackground(Color.BLACK);
@@ -70,7 +66,6 @@ public class Window {
 		canvas.setLayout(new GridBagLayout());
 		canvas.setPreferredSize(new Dimension(displayMode.getWidth(), displayMode.getHeight()));
 		canvas.setFocusable(true);
-		canvas.setMandelbrotRenderer(new MandelbrotRenderer(displayMode.getWidth(), displayMode.getHeight()));
 
 		if (graphicsDevice.isFullScreenSupported()) {
 			graphicsDevice.setFullScreenWindow(jFrame);
@@ -81,13 +76,12 @@ public class Window {
 
 		// Centers the window in the middle of the screen
 		jFrame.setLocationRelativeTo(null);
+		
+		jFrame.setVisible(true);
 	}
 
-	public void showWindow(boolean visibility) {
-		jFrame.setVisible(visibility);
-	}
-	
-	public WindowCanvas getCanvas() {
+	public WindowCanvas getCanvas()
+	{
 		return canvas;
 	}
 }

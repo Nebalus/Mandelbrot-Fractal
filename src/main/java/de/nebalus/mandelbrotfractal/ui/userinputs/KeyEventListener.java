@@ -29,10 +29,10 @@ public class KeyEventListener extends KeyAdapter
 		MandelbrotRenderer renderer = (MandelbrotRenderer) canvas.getMandelbrotRenderer();
 
 		boolean shouldRepaint = true;
-		
+
 		switch (e.getKeyCode()) {
 			case 49:
-				if(canvas.showDebug) {
+				if (canvas.showDebug) {
 					canvas.showDebug = false;
 					break;
 				}
@@ -67,20 +67,20 @@ public class KeyEventListener extends KeyAdapter
 				break;
 
 			case 87:
-				renderer.yOffset -= renderer.getZoom() * 0.1d;
-				System.out.println(" Y - " + renderer.yOffset);
+				renderer.setYOffset(renderer.getYOffset() - (renderer.getZoom() * 0.1d));
+				System.out.println(" Y - " + renderer.getYOffset());
 				break;
 			case 65:
-				renderer.xOffset -= renderer.getZoom() * 0.1d;
-				System.out.println(" X - " + renderer.yOffset);
+				renderer.setXOffset(renderer.getXOffset() - (renderer.getZoom() * 0.1d));
+				System.out.println(" X - " + renderer.getXOffset());
 				break;
 			case 83:
-				renderer.yOffset += renderer.getZoom() * 0.1d;
-				System.out.println(" Y + " + renderer.yOffset);
+				renderer.setYOffset(renderer.getYOffset() + (renderer.getZoom() * 0.1d));
+				System.out.println(" Y + " + renderer.getYOffset());
 				break;
 			case 68:
-				renderer.xOffset += renderer.getZoom() * 0.1d;
-				System.out.println(" X + " + renderer.yOffset);
+				renderer.setXOffset(renderer.getXOffset() + (renderer.getZoom() * 0.1d));
+				System.out.println(" X + " + renderer.getXOffset());
 				break;
 			default:
 				shouldRepaint = false;
