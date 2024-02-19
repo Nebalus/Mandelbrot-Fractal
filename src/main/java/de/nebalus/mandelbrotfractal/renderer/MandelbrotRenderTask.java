@@ -50,7 +50,7 @@ public class MandelbrotRenderTask implements Runnable
 					iteration++;
 				}
 
-				img.setRGB(x, y, renderer.getFilter().filterPixel(iteration, renderer.getMaxIterations()));
+				img.setRGB(x, y, renderer.getColorScheme().definePixelColor(iteration, renderer.getMaxIterations()));
 			}
 			Thread.yield();
 		}

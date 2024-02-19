@@ -1,12 +1,12 @@
-package de.nebalus.mandelbrotfractal.renderer.filter;
+package de.nebalus.mandelbrotfractal.renderer.colorschemes;
 
 import java.awt.Color;
 
-public class TestFilter implements FilterInterface
+public class TestScheme implements ColorSchemeInterface
 {
 
 	@Override
-	public int filterPixel(int iteration, int maxIteration)
+	public int definePixelColor(int iteration, int maxIteration)
 	{
 		float modifier = (float) iteration / maxIteration;
 		float imodifier = 1.0f - modifier;
