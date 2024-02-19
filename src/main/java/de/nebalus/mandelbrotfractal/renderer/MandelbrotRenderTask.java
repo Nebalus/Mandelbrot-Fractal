@@ -54,16 +54,16 @@ public class MandelbrotRenderTask implements Runnable {
 				float imodifier = 1.0f - modifier;
 				
 				if(0.0f <= modifier && modifier < 0.3f) {
-					img.setRGB(x, y, new Color(0, 0, modifier).getRGB());
+					img.setRGB(x, y, new Color(0, 0, modifier * 3).getRGB());
 				} else if (0.3f <= modifier && modifier < 0.6f) {
 					img.setRGB(x, y, new Color(imodifier, modifier, 0).getRGB());
-				} else if (0.6f <= modifier && modifier < 0.90f) {
-					img.setRGB(x, y, new Color(modifier, 0, 0).getRGB());
+				} else if (0.6f <= modifier && modifier < 1.0f) {
+					img.setRGB(x, y, new Color(modifier, 0, imodifier).getRGB());
 				} else {
-					img.setRGB(x, y, new Color(modifier / 4, modifier / 2, modifier / 1.5f).getRGB());
+					img.setRGB(x, y, new Color(0, 0, 0).getRGB());
 				}
 	
-				img.setRGB(x, y, new Color(modifier, modifier, modifier).getRGB());
+				//img.setRGB(x, y, new Color(modifier, modifier, modifier).getRGB());
 			}
 		}
 	}	
