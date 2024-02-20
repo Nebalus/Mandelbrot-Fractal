@@ -1,14 +1,13 @@
 package de.nebalus.mandelbrotfractal.ui;
 
+import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
-import javax.swing.JPanel;
-
 import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
 
-public class WindowCanvas extends JPanel
+public class WindowCanvas extends Canvas
 {
 
 	private static final long serialVersionUID = 8861427947706270401L;
@@ -22,14 +21,12 @@ public class WindowCanvas extends JPanel
 		this.renderer = new MandelbrotRenderer(windowWidth, windowHeigth);
 
 		this.showDebug = false;
-
-		super.setDoubleBuffered(true);
 	}
-
+	
 	@Override
-	public void paintComponent(Graphics g)
+	public void paint(Graphics g)
 	{
-		super.paintComponent(g);
+		super.paint(g);
 
 		MandelbrotRenderer mbRenderer = (MandelbrotRenderer) renderer;
 
@@ -48,6 +45,7 @@ public class WindowCanvas extends JPanel
 			g.drawString("frameRendertimeNanos: " + proccesTimeNanos, 10, g.getFont().getSize() * 5 + 50);
 			g.drawString("frameRendertimeMillis: " + (proccesTimeNanos / 1000000), 10, g.getFont().getSize() * 6 + 60);
 		}
+		
 		Toolkit.getDefaultToolkit().sync();
 		g.dispose();
 	}
