@@ -22,7 +22,6 @@ public class MandelbrotRenderTask implements Runnable
 	@Override
 	public void run()
 	{
-
 		final double middleR = -0.75;
 		final double middleI = 0.0;
 		final double rangeR = 4.5 * renderer.getZoom();
