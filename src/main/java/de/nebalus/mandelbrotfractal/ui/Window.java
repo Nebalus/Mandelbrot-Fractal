@@ -64,7 +64,7 @@ public class Window
 		canvas.setBackground(Color.BLACK);
 		canvas.setName("MainCanvas");
 		canvas.setLayout(new GridBagLayout());
-		canvas.setPreferredSize(new Dimension(displayMode.getWidth(), displayMode.getHeight()));
+		canvas.setPreferredSize(new Dimension(jFrame.getWidth(), jFrame.getHeight()));
 		canvas.setFocusable(true);
 
 		if (graphicsDevice.isFullScreenSupported()) {
