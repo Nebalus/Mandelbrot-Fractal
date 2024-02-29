@@ -60,8 +60,8 @@ public class MandelbrotRenderer
 	{
 		return colorScheme;
 	}
-
-	public BufferedImage render()
+	
+	public synchronized BufferedImage render()
 	{
 		BufferedImage img = getBaseImage();
 
