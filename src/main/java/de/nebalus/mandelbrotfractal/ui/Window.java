@@ -54,8 +54,9 @@ public class Window
 		
 		// Canvas dekaration
 		canvas.setBackground(Color.BLACK);
+
 		canvas.setName("Canvas");
-		canvas.setPreferredSize(new Dimension(displayMode.getWidth(), displayMode.getHeight()));
+		canvas.setPreferredSize(new Dimension(jFrame.getWidth(), jFrame.getHeight()));
 		canvas.setFocusable(true);
 
 		if (graphicsDevice.isFullScreenSupported()) {
