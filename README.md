@@ -48,3 +48,7 @@ This project provides a multithreaded user interface to explore the wonders of t
   <img src="./docs/imgs/img14.png" width="30%" />
   <img src="./docs/imgs/img15.png" width="33%" />
 </p>
+<p float="left">
+  <img src="./docs/imgs/img16.png" width="33%" />
+  <img src="./docs/imgs/img17.png" width="30%" />
+</p>
