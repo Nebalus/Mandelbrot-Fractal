@@ -1,4 +1,4 @@
-package de.nebalus.mandelbrotfractal.renderer.colorschemes;
+package dev.nebalus.mandelbrotfractal.renderer.colorschemes;
 
 import java.awt.*;
 

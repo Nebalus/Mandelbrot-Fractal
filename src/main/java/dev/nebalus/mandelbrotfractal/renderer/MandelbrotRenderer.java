@@ -1,11 +1,11 @@
-package de.nebalus.mandelbrotfractal.renderer;
+package dev.nebalus.mandelbrotfractal.renderer;
 
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.List;
 
-import de.nebalus.mandelbrotfractal.renderer.colorschemes.ColorSchemeInterface;
-import de.nebalus.mandelbrotfractal.renderer.colorschemes.RainbowScheme;
+import dev.nebalus.mandelbrotfractal.renderer.colorschemes.ColorSchemeInterface;
+import dev.nebalus.mandelbrotfractal.renderer.colorschemes.RainbowScheme;
 
 public class MandelbrotRenderer
 {

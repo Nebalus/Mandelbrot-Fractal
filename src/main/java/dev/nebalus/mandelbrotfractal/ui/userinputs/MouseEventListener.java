@@ -1,13 +1,13 @@
-package de.nebalus.mandelbrotfractal.ui.userinputs;
+package dev.nebalus.mandelbrotfractal.ui.userinputs;
 
 import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 
-import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
-import de.nebalus.mandelbrotfractal.ui.Window;
-import de.nebalus.mandelbrotfractal.ui.WindowCanvas;
+import dev.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
+import dev.nebalus.mandelbrotfractal.ui.Window;
+import dev.nebalus.mandelbrotfractal.ui.WindowCanvas;
 
 public class MouseEventListener extends MouseAdapter
 {

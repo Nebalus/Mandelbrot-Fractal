@@ -1,11 +1,11 @@
-package de.nebalus.mandelbrotfractal;
+package dev.nebalus.mandelbrotfractal;
 
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
-import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
-import de.nebalus.mandelbrotfractal.ui.Window;
-import de.nebalus.mandelbrotfractal.ui.WindowCanvas;
+import dev.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
+import dev.nebalus.mandelbrotfractal.ui.Window;
+import dev.nebalus.mandelbrotfractal.ui.WindowCanvas;
 
 public class FractalApp
 {

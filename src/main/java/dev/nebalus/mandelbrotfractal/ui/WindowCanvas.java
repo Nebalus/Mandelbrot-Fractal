@@ -1,4 +1,4 @@
-package de.nebalus.mandelbrotfractal.ui;
+package dev.nebalus.mandelbrotfractal.ui;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import java.awt.Toolkit;
 import javax.swing.JPanel;
 
-import de.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
+import dev.nebalus.mandelbrotfractal.renderer.MandelbrotRenderer;
 
 public class WindowCanvas extends JPanel
 {

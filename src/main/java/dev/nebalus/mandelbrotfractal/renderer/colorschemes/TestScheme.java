@@ -1,8 +1,8 @@
-package de.nebalus.mandelbrotfractal.renderer.colorschemes;
+package dev.nebalus.mandelbrotfractal.renderer.colorschemes;
 
 import java.awt.Color;
 
-public class RainbowScheme implements ColorSchemeInterface
+public class TestScheme implements ColorSchemeInterface
 {
 
 	@Override
@@ -14,7 +14,7 @@ public class RainbowScheme implements ColorSchemeInterface
 		if (0.0f <= modifier && modifier < 0.3f) {
 			return new Color(0, 0, modifier * 3).getRGB();
 		} else if (0.3f <= modifier && modifier < 0.6f) {
-			return new Color(imodifier, modifier, 0).getRGB();
+			return new Color(imodifier, modifier - 0.2f, 0).getRGB();
 		} else if (0.6f <= modifier && modifier < 1.0f) {
 			return new Color(modifier, 0, imodifier).getRGB();
 		} else {

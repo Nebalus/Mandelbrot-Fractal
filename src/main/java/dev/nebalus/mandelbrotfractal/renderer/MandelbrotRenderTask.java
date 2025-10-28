@@ -1,4 +1,4 @@
-package de.nebalus.mandelbrotfractal.renderer;
+package dev.nebalus.mandelbrotfractal.renderer;
 
 import java.awt.image.BufferedImage;
 

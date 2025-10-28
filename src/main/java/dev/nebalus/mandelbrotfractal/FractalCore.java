@@ -1,4 +1,4 @@
-package de.nebalus.mandelbrotfractal;
+package dev.nebalus.mandelbrotfractal;
 
 import java.awt.GraphicsEnvironment;
 

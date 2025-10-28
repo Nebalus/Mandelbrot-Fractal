@@ -1,4 +1,4 @@
-package de.nebalus.mandelbrotfractal.ui;
+package dev.nebalus.mandelbrotfractal.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,8 +8,8 @@ import java.awt.GraphicsDevice;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
-import de.nebalus.mandelbrotfractal.ui.userinputs.KeyEventListener;
-import de.nebalus.mandelbrotfractal.ui.userinputs.MouseEventListener;
+import dev.nebalus.mandelbrotfractal.ui.userinputs.KeyEventListener;
+import dev.nebalus.mandelbrotfractal.ui.userinputs.MouseEventListener;
 
 public class Window
 {
